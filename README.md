@@ -1,7 +1,7 @@
 # Integração Wazuh + TheHive
 
 Link de referência do Wazuh para integração: [Using Wazuh and TheHive for threat protection and incident response](https://wazuh.com/blog/using-wazuh-and-thehive-for-threat-protection-and-incident-response/)
-
+video de referencia: https://www.youtube.com/watch?v=03Q51z6tKHs , https://www.youtube.com/watch?v=EbMBtkV_R_w&list=PLHjuPxrwcdsZub-nvo_yKgCu-KwSn2qTn&index=17
 ---
 
 ## Pré-requisitos
