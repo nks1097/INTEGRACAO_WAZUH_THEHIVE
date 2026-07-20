@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/var/ossec/framework/python/bin/python3
 import json
 import sys
 import os
@@ -7,15 +7,6 @@ import logging
 import uuid
 from thehive4py.api import TheHiveApi
 from thehive4py.models import Alert, AlertArtifact
-
-# ossec.conf configuration:
-#  <integration>
-#    <name>custom-w2thive</name>
-#    <hook_url>http://localhost:9000</hook_url>
-#    <api_key>123456790</api_key>
-#    <alert_format>json</alert_format>
-#  </integration>
-
 
 #start user config
 
@@ -164,7 +155,7 @@ def send_alert(alert, thive_api):
 
 
 if __name__ == "__main__":
-    
+
     try:
        logger.debug('debug mode') # if debug enabled       
        # Main function

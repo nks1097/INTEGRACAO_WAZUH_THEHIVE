@@ -16,21 +16,21 @@ case ${DIR_NAME} in
             WAZUH_PATH="$(cd ${DIR_NAME}/../..; pwd)"
         fi
 
-	PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
+    PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
     ;;
     */bin)
-	if [ -z "${WAZUH_PATH}" ]; then
-            WAZUH_PATH="$(cd ${DIR_NAME}/..; pwd)"
-        fi
+    if [ -z "${WAZUH_PATH}" ]; then
+        WAZUH_PATH="$(cd ${DIR_NAME}/..; pwd)"
+    fi
 
-	PYTHON_SCRIPT="${WAZUH_PATH}/framework/scripts/${SCRIPT_NAME}.py"
+    PYTHON_SCRIPT="${WAZUH_PATH}/framework/scripts/${SCRIPT_NAME}.py"
     ;;
      */integrations)
         if [ -z "${WAZUH_PATH}" ]; then
             WAZUH_PATH="$(cd ${DIR_NAME}/..; pwd)"
         fi
 
-	PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
+    PYTHON_SCRIPT="${DIR_NAME}/${SCRIPT_NAME}.py"
     ;;
 esac
 
