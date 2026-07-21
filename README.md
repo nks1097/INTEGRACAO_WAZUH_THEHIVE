@@ -132,3 +132,5 @@ Para que o Wazuh leia a nova configuração no `ossec.conf` e carregue o script 
 ### Validação:
 * Vá para a interface web do TheHive, clique no menu **Alerts** (Alertas) no painel esquerdo.
 * Aguarde alguns minutos ou force um erro no seu ambiente monitorado pelo Wazuh (como falhas sucessivas de login via SSH). Assim que o Wazuh gerar um alerta de nível igual ou maior que 8 (configurado no Threshold), ele aparecerá automaticamente na fila de alertas do TheHive, pronto para ser transformado em um Caso de Investigação.
+
+  ![Wazuh ossec.conf Integration](imagens/8.png)
