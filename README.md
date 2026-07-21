@@ -17,16 +17,13 @@ Para que o Wazuh consiga enviar dados para o TheHive, ele precisa de uma chave d
 1. Acesse a interface web do TheHive (ex: `http://192.168.0.107:9000`).
 2. Acesse a aba de **Usuários** (conforme mostrado nas imagens de apoio).
 
-   ![TheHive Lista de Usuários](imagens/thehive-lista-usuarios.png)
+   ![TheHive Lista de Usuários](imagens/2.png)
 
 3. Selecione o usuário que será responsável pela integração (ex: `natanael`, que possui o perfil `org-admin` ou `analyst`).
-
-   ![TheHive Previsualizacao Usuário](imagens/thehive-previsualizacao-usuario.png)
-
 4. Na página de detalhes do usuário, localize a seção **Chave API** (API Key) e clique em **Criar Chave API** (Create API Key).
 5. Clique em **Revelar** (Reveal) e copie a chave gerada (ex: `sY59XDceTK6...`). Salve-a temporariamente em um bloco de notas.
 
-   ![TheHive API Key Reveal](imagens/thehive-api-key-reveal.png)
+   ![TheHive API Key Reveal](imagens/4.png)
 
 ---
 
@@ -61,8 +58,11 @@ O Wazuh utiliza scripts localizados na pasta `integrations` para encaminhar os a
    ```bash
    sudo nano custom-w2thive.py
    ```
-3. Cole o código Python de integração fornecido pelo repositório base (visto no vídeo).
-4. **Atenção à configuração de Threshold (Imagem 8):** Dentro do código Python, localize a seção `# Global vars`. A variável `lvl_threshold=8` indica que apenas alertas do Wazuh de nível 8 ou superior serão enviados ao TheHive. Você pode alterar esse número conforme a necessidade do seu laboratório.
+3. Cole o código Python de integração fornecido pelo repositório base.
+4. **Atenção à configuração de Threshold:** Dentro do código Python, localize a seção `# Global vars`. A variável `lvl_threshold=8` indica que apenas alertas do Wazuh de nível 8 ou superior serão enviados ao TheHive. Você pode alterar esse número conforme a necessidade do seu laboratório.
+
+   ![TheHive API Key Reveal](imagens/6.png)
+
 5. Salve e saia do arquivo (Ctrl+O, Enter, Ctrl+X).
 6. Crie o script bash de execução (wrapper):
    ```bash
@@ -78,11 +78,13 @@ Conforme destacado no vídeo, se as permissões e o grupo dono dos arquivos esti
 
 1. Dê permissão de execução (755) para ambos os arquivos criados:
    ```bash
-   sudo chmod 755 /var/ossec/integrations/custom-w2thive*
+   sudo chmod 755 /var/ossec/integrations/custom-w2thive.py
+   sudo chmod 755 /var/ossec/integrations/custom-w2thive
    ```
 2. Altere o dono e o grupo dos arquivos para `root` e `wazuh` (versões mais recentes do Wazuh usam o grupo `wazuh`, e não `ossec`):
    ```bash
-   sudo chown root:wazuh /var/ossec/integrations/custom-w2thive*
+   sudo chown root:wazuh /var/ossec/integrations/custom-w2thive.py
+   sudo chown root:ossec /var/ossec/integrations/custom-w2thive
    ```
 
 ---
@@ -106,7 +108,7 @@ Agora precisamos avisar ao Wazuh Manager que a integração existe e para onde e
    </integration>
    ```
    
-   ![Wazuh ossec.conf Integration](imagens/wazuh-ossec-conf-integration.png)
+   ![Wazuh ossec.conf Integration](imagens/7.png)
 
 4. Substitua o IP `192.168.0.107` pelo IP real do seu servidor TheHive.
 5. Substitua o conteúdo de `<api_key>` pela chave que você copiou no Passo 1.
